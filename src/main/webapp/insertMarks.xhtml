@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+     <h:head>
+        <title>Add Marks</title>
+    </h:head>
+    <h:body>
+         <center>
+       <h:form>   
+         <h:commandLink value="Home" action="index" immediate="true"/>
+      
+         <h:outputLabel value="&#160;&#160;&#160;&#160;&#160;&#160;" />
+         <h:commandLink  value="Veiw Student" action="viewAll" immediate="true" />     
+       
+            
+            <p:panel header="Marks Form" > 
+                <h:outputText value="&#160;&#160;&#160;"/>
+                <h:message for="#{null}" infoStyle="color: green;" errorStyle="color: red;" />
+                <br/><br/><br/>
+                
+                <h:outputText value="Admission No:"/>
+                <h:selectOneMenu id="admno" value="#{marksManagedBean.insertedResult.admissionno}" >
+                    <f:selectItem itemValue="" itemLabel="Select One"/>  
+                    <f:selectItems value="#{studentManagedBean.studentIDs}" />                    
+                </h:selectOneMenu>  
+            
+            
+                <h:outputText value="&#160;&#160;&#160;"/>               
+                
+                <h:outputText value="Subject ID :"/>
+                <h:selectOneMenu id="subjectid" value="#{marksManagedBean.insertedResult.subjectid}" >
+                    <f:selectItem itemValue="" itemLabel="Select One"/>  
+                    <f:selectItems value="#{subjectManagedBean.subjectIDs}" />                    
+                </h:selectOneMenu> 
+      
+                <h:outputText value="&#160;&#160;&#160;"/>       
+                    
+            <h:outputText value="Subject Marks :"/>
+            <h:inputText id="subjectmarks" size="22" value="#{marksManagedBean.insertedResult.studentmarks}" required="true" requiredMessage="Validation Error: Value is required!" />
+            <h:message for="subjectmarks" errorStyle="color: red;" infoStyle="color: green;" />
+
+             
+            <br/><br/>
+            <h:commandButton value="Enter" actionListener="#{marksManagedBean.insertMarks()}"/>
+            <h:outputText value="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"/>            
+            <h:commandButton value="Reset" type="reset"/>
+            </p:panel> 
+      
+    </h:form>
+  </center>
+    </h:body>
+</html>
+

@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Insert Subject Details </title>
+    </h:head>
+    
+    <h:body>
+       <center>
+       <h:form>
+       <h:commandLink value="Home" action="index" immediate="true"/>
+       <h:outputText value="&#160;&#160;&#160;"/>       
+       <h:commandLink value="View Subject" action="viewSubject" immediate="true"/>
+       <h:outputText value="&#160;&#160;&#160;"/>   
+       <h:commandLink value="Update Subject" action="viewSubject" immediate="true"/> 
+       <h:outputText value="&#160;&#160;&#160;"/><br/>
+          
+    
+           <p:panel header="Subject Details"> 
+
+            <h:message for="#{null}" infoStyle="color: green;" errorStyle="color: red;" />
+
+            <h:panelGrid columns="3" >
+                
+                <h:outputText value="Subject Name :"/>
+                <h:inputText id="subjectname" size="22" value="#{subjectManagedBean.createSubject.subjectname}" required="true" requiredMessage="Validation Error: Value is required!" />
+                <h:message for="subjectname" errorStyle="color: red;" infoStyle="color: green;" />
+            </h:panelGrid>            
+              <br/>
+              
+              <h:commandButton value="Register" actionListener="#{subjectManagedBean.insertSubject}"/>
+            <h:outputText value="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"/>            
+            <h:commandButton value="Reset" type="reset"/>
+           </p:panel>
+    </h:form>
+ </center>
+    </h:body>
+</html>
+

@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title> View Student Details </title>
+    </h:head>
+    
+    <h:body>
+        <center> 
+      
+       <h:form>
+            <h:commandLink value="Home" action="index" immediate="true"/>
+            <h:outputText value="&#160;&#160;&#160;"/> 
+            <h:commandLink value="Add Student" action="insertStudent" immediate="true"/> 
+            <h:outputText value="&#160;&#160;&#160;"/> 
+            <br></br>  
+            <br></br>  
+            <p:panel> 
+           <h:outputText value="Grade &#160;&#160;&#160;&#160;&#160;&#160; &#160;:"/>
+            <h:selectOneMenu id="grade" value="#{studentManagedBean.grade}"  >
+                    <f:selectItem itemValue="0" itemLabel="Select One"/>
+                    <f:selectItem itemValue="1" itemLabel="1"/>
+                    <f:selectItem itemValue="2" itemLabel="2"/>
+                    <f:selectItem itemValue="3" itemLabel="3"/>
+                    <f:selectItem itemValue="4" itemLabel="4"/>
+                    <f:selectItem itemValue="5" itemLabel="5"/>
+                    <f:selectItem itemValue="6" itemLabel="6"/>
+                    <f:selectItem itemValue="7" itemLabel="7"/>
+                    <f:selectItem itemValue="8" itemLabel="8"/>
+                    <f:selectItem itemValue="9" itemLabel="9"/>
+                    <f:selectItem itemValue="10" itemLabel="10"/>
+                    <f:selectItem itemValue="11" itemLabel="11"/>
+                    <f:selectItem itemValue="12" itemLabel="12"/>
+                    <f:selectItem itemValue="13" itemLabel="13"/>
+                </h:selectOneMenu>        
+        <h:outputText value="&#160;"/>
+            
+
+          <h:outputText value="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"/> 
+        
+        <h:commandButton value="Search" actionListener="#{studentManagedBean.searchStudent}" >
+            <f:setPropertyActionListener target="#{studentManagedBean.grade}" value="#{grade}"/> 
+        </h:commandButton>
+          
+         <br></br>  
+         <br></br>  
+         
+            <p:dataTable id="dataTable" var="student" value="#{studentManagedBean.searchStudent}" paginator="true" rows="10" 
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         resizableColumns="true">
+               <f:facet name="header">
+                Student Details
+            </f:facet>
+                <p:column sortBy="#{student.admno}">                    
+                     <f:facet name="header"> Admission No </f:facet>  
+                      <h:commandLink value="#{student.admno}" action="updateStudent">
+                         <f:setPropertyActionListener value="#{student}" target="#{studentManagedBean.selectedStudent}"/>
+                       </h:commandLink>
+                                                          
+                </p:column>
+
+                <p:column sortBy="#{student.name}">
+                    <f:facet name="header" >Student Name </f:facet>
+                     <h:outputText value="#{student.name}"> </h:outputText> 
+                </p:column> 
+                
+                <p:column sortBy="#{student.address}">
+                    <f:facet name="header">Address</f:facet>
+                    <h:outputText value="#{student.address}" />  		                                            
+                </p:column>
+
+                <p:column sortBy="#{student.grade}">
+                    <f:facet name="header">Grade</f:facet>
+                    <h:outputText value="#{student.grade}" />    		
+                </p:column>
+                     
+                <p:column sortBy="#{student.parentName}">                    
+                    <f:facet name="header">Parent Name</f:facet>     
+                    <h:outputText value="#{student.parentName}" />                                        
+                </p:column>    
+            </p:dataTable>
+        
+  </p:panel>  
+            </h:form>  
+</center>
+ </h:body>
+</html>
+

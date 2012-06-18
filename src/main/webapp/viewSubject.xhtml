@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Subject Details</title>
+    </h:head>
+    <h:body>
+         <center>
+        <h:form> 
+            
+        <h:commandLink value="Home" action="index" immediate="true"/>
+        <h:outputText value="&#160;&#160;&#160;"/>       
+        <h:commandLink value="Add Subject" action="insertSubject" immediate="true"/>
+        <h:outputText value="&#160;&#160;&#160;"/>    
+     
+       
+            
+           <p:panel header="Subject Details" > 
+
+        <p:dataTable id="dataTable" var="subject" value="#{subjectManagedBean.subjectList}">
+        <f:facet name="header">Subject Details</f:facet>
+
+            <p:column>
+                <f:facet name="header"><h:outputText value="Subject Id"/></f:facet>        
+                <h:commandLink value="#{subject.subjectid}" action="subjectUpdate">
+                <f:setPropertyActionListener value="#{subject}" target="#{subjectManagedBean.searchedSubject}"/>
+                </h:commandLink>
+            </p:column>
+
+            <p:column >
+                <f:facet name="header"><h:outputText value="Subject Name"/></f:facet>
+                <h:outputText value="#{subject.subjectname}"/>
+            </p:column>
+
+        </p:dataTable>
+           </p:panel>
+    </h:form>
+          </center>
+    </h:body>
+</html>
+
